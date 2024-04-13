@@ -2,13 +2,13 @@
 
 namespace LabScript
 {
-    public class AlertService : IAsyncDisposable
+    public class AlertService : IAsyncDisposable, IAlertService
     {
         readonly Lazy<Task<IJSObjectReference>> ijsObjectReference;
 
         public AlertService(IJSRuntime ijsRuntime)
         {
-            this.ijsObjectReference = new Lazy<Task<IJSObjectReference>>(() => 
+            this.ijsObjectReference = new Lazy<Task<IJSObjectReference>>(() =>
             ijsRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Home.razor.js").AsTask());
         }
 
